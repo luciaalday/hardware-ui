@@ -1,0 +1,15 @@
+:root {
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  background-color: #203040;
+  color: white;
+}
+
+a {
+  color: white;
+  text-decoration: none;
+}
+
+article {
+  margin: 40px auto;
+
+}
