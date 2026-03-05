@@ -4,6 +4,10 @@
   color: white;
 }
 
+html, body {
+  margin: 0;
+}
+
 a {
   color: white;
   text-decoration: none;
@@ -12,4 +16,13 @@ a {
 article {
   margin: 40px auto;
 
+}
+
+nav {
+  background-color: #224363;
+  margin: 0;
+}
+
+.nav-top-link {
+  padding: 20px;
 }

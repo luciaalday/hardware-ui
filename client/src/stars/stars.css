@@ -1,0 +1,17 @@
+.star-shadow {
+    filter: drop-shadow(0 0 10px #9090b0);
+}
+
+.appear-on-hover {
+    transition: 1s ease-out;
+    opacity: 0;
+    background-color: #040d25;
+    z-index: 999;
+    border-radius: 5px;
+    padding: 5px;
+}
+
+.appear-on-hover:hover {
+    transition: 0.2s ease-in;
+    opacity: 1;
+}
