@@ -20,11 +20,10 @@
   margin: 15px;
   border-radius: 10px;
   padding: 20px;
-  box-shadow: 1px 1px 10px 3px #ffffff80;
-  transition: 0.2s ease-in;
+  transition: 0.4s ease;
 }
 .game-item:hover {
-  box-shadow: 1px 1px 10px 3px #ffffff;
+  box-shadow: 1px 1px 10px 3px #ffffff80;
 }
 
 button {
