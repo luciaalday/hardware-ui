@@ -3,7 +3,6 @@
 }
 
 .appear-on-hover {
-    transition: 1s ease-out;
     opacity: 0;
     background-color: #040d25;
     z-index: 999;
@@ -12,6 +11,15 @@
 }
 
 .appear-on-hover:hover {
-    transition: 0.2s ease-in;
+    transition: 0.1s ease-in;
     opacity: 1;
+}
+.star-container {
+    position: relative;
+    width: 300vw;
+    margin: auto;
+}
+
+.star-icon {
+    position: absolute;
 }
