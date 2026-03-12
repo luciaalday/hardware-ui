@@ -15,8 +15,10 @@ export default function ColorGame() {
     const [gh, setGh] = useState('00');
     const [bh, setBh] = useState('00');
 
-    const [showClue, setShowClue] = useState(true);
+    const [showClue, setShowClue] = useState(false);
+    const [easy, setEasy] = useState(true);
     const [score, setScore] = useState(0);
+    const [highScore, setHighScore] = useState(0);
 
     const resetColor = async () => {
         const newR = Math.floor(Math.random() * 256);
@@ -44,36 +46,39 @@ export default function ColorGame() {
 
     const handleGuess = async () => {
         setShowClue(true);
+        setScore(score + 1);
         setTimeout(()=>setShowClue(false), 2000);
         if (r==ru && g==gu && b==bu) {
-            setScore(score + 1);
+            if (score > highScore) await setHighScore(score);
             resetColor();
+            setScore();
         }
         return;
     }
 
     return (
         <div>
+            <h1>Color Picker Game</h1>
             <article style={{backgroundColor:`rgb(${r}, ${g}, ${b})`}}>
                 <div className='game-container'>
                     <div className='game-item'>
                         <h2>R</h2>
                         <input type='number' min='0' max='255' value={ru} onChange={(e)=>handleRu(Number(e.target.value))} />
-                        <input type='range' min='0' max='255' value={ru} onChange={(e)=>handleRu(Number(e.target.value))} />
+                        <input type='range' min='0' max='255' value={ru} onChange={(e)=>handleRu(Number(e.target.value))} style={{accentColor:easy ? `rgb(${ru}, ${gu}, ${bu})` : '#606060'}} />
                         <p>#{rh}</p>
                         <h3 className={`${showClue ? '' : 'hidden'}`}>{ru==r ? <IoIosCheckmark /> : (r > ru ? <IoIosArrowUp /> : <IoIosArrowDown />)}</h3>
                     </div>
                     <div className='game-item'>
                         <h2>G</h2>
                         <input type='number' min='0' max='255' value={gu} onChange={(e)=>handleGu(Number(e.target.value))} />
-                        <input type='range' min='0' max='255' value={gu} onChange={(e)=>handleGu(Number(e.target.value))} />
+                        <input type='range' min='0' max='255' value={gu} onChange={(e)=>handleGu(Number(e.target.value))} style={{accentColor: easy ? `rgb(${ru}, ${gu}, ${bu})` : '#606060'}} />
                         <p>{gh}</p>
                         <h3 className={`${showClue ? '' : 'hidden'}`}>{gu==g ? <IoIosCheckmark /> : (g > gu ? <IoIosArrowUp /> : <IoIosArrowDown />)}</h3>
                     </div>
                     <div className='game-item'>
                         <h2>B</h2>
                         <input type='number' min='0' max='255' value={bu} onChange={(e)=>handleBu(Number(e.target.value))} />
-                        <input type='range' min='0' max='255' value={bu} onChange={(e)=>handleBu(Number(e.target.value))} />
+                        <input type='range' min='0' max='255' value={bu} onChange={(e)=>handleBu(Number(e.target.value))} style={{accentColor:easy ? `rgb(${ru}, ${gu}, ${bu})` : '#606060'}} />
                         <p>{bh}</p>
                         <h3 className={`${showClue ? '' : 'hidden'}`}>{bu==b ? <IoIosCheckmark /> : (b > bu ? <IoIosArrowUp /> : <IoIosArrowDown />)}</h3>
                     </div>
@@ -81,8 +86,12 @@ export default function ColorGame() {
                 <button onClick={handleGuess}>Guess</button>
                 <br></br>
                 <button onClick={resetColor}>New color</button>
-                <h2>Score {score}</h2>
+                <br></br>
+                <div className='game-item'>
+                    <h2>High Score {highScore}</h2>
+                </div>
             </article>
+            <button className='mode' onClick={()=>setEasy(!easy)}>{easy ? 'Easy' : 'Hard'}</button>
         </div>
     )
 }

@@ -31,13 +31,16 @@ button {
   border: none;
   padding: 10px;
   border-radius: 10px;
-  box-shadow: 1px 1px 5px 2px #a2d5e7;
+  box-shadow: 1px 1px 5px 2px #a2d5e780;
   color: #bbe2f0;
-  background-color: #296484;
+  background-color: #29648480;
   margin: 10px;
-  transition: 0.1s ease-in;
+  transition: 0.2s ease-in;
 }
-
+button:hover {
+  background-color: #296484;
+  cursor: pointer;
+}
 button:active {
   transform: scale(0.90);
 }
@@ -63,4 +66,14 @@ h3 {
 }
 h3.hidden {
   max-height: 0;
+}
+.mode {
+  background-color: transparent;
+  text-decoration: underline;
+  box-shadow: none;
+  margin: 0;
+}
+
+article {
+  margin-bottom: 0;
 }
