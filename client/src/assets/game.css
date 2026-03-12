@@ -1,0 +1,66 @@
+.container-large {
+  display: flex;
+  flex-direction: column;
+  justify-content: stretch;
+}
+
+.game-container {
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+.game-item {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  background-color: #40404080;
+  margin: 15px;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 1px 1px 10px 3px #ffffff80;
+  transition: 0.2s ease-in;
+}
+.game-item:hover {
+  box-shadow: 1px 1px 10px 3px #ffffff;
+}
+
+button {
+  border: none;
+  padding: 10px;
+  border-radius: 10px;
+  box-shadow: 1px 1px 5px 2px #a2d5e7;
+  color: #bbe2f0;
+  background-color: #296484;
+  margin: 10px;
+  transition: 0.1s ease-in;
+}
+
+button:active {
+  transform: scale(0.90);
+}
+
+h1 {
+  padding: 20px;
+  color: white;
+}
+input {
+  background-color: transparent;
+  color: white;
+  text-align: center;
+  border: none;
+  width: fit-content;
+  margin: 10px auto;
+}
+h3 {
+  transition: 0.4s ease-in-out;
+  font-size: 80px;
+  margin: 0;
+  overflow: hidden;
+  max-height: 100px;
+}
+h3.hidden {
+  max-height: 0;
+}

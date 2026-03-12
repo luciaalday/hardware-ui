@@ -5,6 +5,7 @@ import Calculator from './pages/Calculator';
 import Circuit from './pages/Circuit';
 import Stars from './stars/stars';
 import ColorContrast from './pages/ColorContract';
+import ColorGame from './pages/ColorGame';
 
 
 export default function App() {
@@ -18,6 +19,7 @@ export default function App() {
           <Route path={`/circuit`} element={<Circuit />} />
           <Route path={`/stars`} element={<Stars />} />
           <Route path={`/color`} element={<ColorContrast />} />
+          <Route path={`/colorgame`} element={<ColorGame />} />
         </Routes>
       </Router>
     </div>

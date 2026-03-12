@@ -1,4 +1,4 @@
-import { use, useState } from 'react';
+import { useState } from 'react';
 import { ChromePicker } from 'react-color';
 import { IoCheckmarkDoneCircle, IoCheckmarkCircle, IoCloseCircle } from 'react-icons/io5';
 
