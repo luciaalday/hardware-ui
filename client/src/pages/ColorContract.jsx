@@ -30,19 +30,13 @@ export default function ColorContrast() {
     const [txt2Txt1, setTxt2Txt1] = useState(0);
     
 
-    const relLuminance = async (r, g, b) => {
-        const R = await sRGBtoRGB(r);
-        const G = await sRGBtoRGB(g);
-        const B = await sRGBtoRGB(b);
-
-        const L = 0.2125 * R + 0.7152 * G + 0.0722 * B;
-        return L;
+    const sRGBtoRGB = (s) => {
+        const sRGB = s / 255;
+        return sRGB <= 0.03928 ? sRGB / 12.92 : Math.pow((sRGB + 0.055) / 1.055, 2.4);
     }
 
-    const sRGBtoRGB = async (s) => {
-        const sRGB = s / 255;
-        const RGB = sRGB <= 0.03928 ? sRGB / 12.92 : Math.pow((sRGB + 0.055) / 1.055, 2.4);
-        return RGB
+    const relLuminance = (r, g, b) => {
+        return 0.2126 * sRGBtoRGB(r) + 0.7152 * sRGBtoRGB(g) + 0.0722 * sRGBtoRGB(b);
     }
 
     const handleBackground = async (colorRef) => {
@@ -64,7 +58,7 @@ export default function ColorContrast() {
         setOkTxt1(ratio1 >= 4);
         
         let ratio2;
-        if (L > txt1L) ratio2 = L / txt2L;
+        if (L > txt2L) ratio2 = L / txt2L;
         else ratio2 = txt2L / L;
         setTxt2Bg(ratio2.toFixed(1));
         setOkTxt2Bg(ratio2 >= 4);
@@ -81,7 +75,7 @@ export default function ColorContrast() {
 
         let ratio1;
         if (L > bgL) ratio1 = L / bgL;
-        else ratio = bgL / L;
+        else ratio1 = bgL / L;
         setTxt1Bg(ratio1.toFixed(1));
         setOkTxt1(ratio1 >= 4);
 
@@ -89,7 +83,7 @@ export default function ColorContrast() {
         if (L > txt2L) ratio2 = L / txt2L;
         else ratio2 = txt2L / L;
         setTxt2Txt1(ratio2.toFixed(1));
-        setOkTxt2Txt1(ratio2 >= 4);
+        setOkTxt2Txt1(ratio2 >= 3);
     }
     const handleText2 = async (colorRef) => {
         const { r, g, b } = colorRef.rgb;
@@ -108,10 +102,10 @@ export default function ColorContrast() {
         setOkTxt2Bg(ratio1 >= 4);
         
         let ratio2;
-        if (L > txt1L) ratio2 = L / txt2L;
+        if (L > txt1L) ratio2 = L / txt1L;
         else ratio2 = txt1L / L;
         setTxt2Txt1(ratio2.toFixed(1));
-        setOkTxt2Txt1(ratio2 >= 4);
+        setOkTxt2Txt1(ratio2 >= 3);
     }
 
     return (
@@ -136,7 +130,7 @@ export default function ColorContrast() {
                     </div>
                     <div className='item'>
                         <div>
-                            <h3 style={{color:text1}}>Text 1</h3>
+                            <h2 style={{color:text1}}>Text 1</h2>
                             <div className='list'>
                                 <p style={{color:backgroundText}}>R:&ensp;{txt1R}</p>
                                 <p style={{color:backgroundText}}>G:&ensp;{txt1G}</p>
@@ -155,7 +149,7 @@ export default function ColorContrast() {
                     </div>
                     <div className='item'>
                         <div>
-                            <h3 style={{color:text2}}>Text 2</h3>
+                            <h2 style={{color:text2}}>Text 2</h2>
                             <div className='list'>
                                 <p style={{color:backgroundText}}>R:&ensp;{txt2R}</p>
                                 <p style={{color:backgroundText}}>G:&ensp;{txt2G}</p>

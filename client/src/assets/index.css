@@ -1,5 +1,5 @@
 :root {
-  font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
   background-color: #203040;
   color: white;
 }
@@ -8,16 +8,17 @@ html, body {
   margin: 0;
   text-align: center;
 }
-
+h2 {
+  font-size: 2em;
+}
 a {
   color: white;
   text-decoration: none;
 }
-
 article {
   text-align: center;
   width: 90%;
-  margin: 5% auto;
+  margin: auto;
   border-radius: 20px;
   box-shadow: 0 0 10px 5px #296484;
   border: 1px solid #224363
@@ -55,17 +56,41 @@ li {
 nav {
   background-color: #224363;
   margin: 0;
-  padding: 15px;
+  position: relative;
 }
-
 p {
   margin: 0.1em;
 }
-
 .nav-top-link {
   transition: 0.3s ease-in;
   padding: 15px;
 }
 .nav-top-link:hover {
+  background-color: #296484;
+}
+.dropdown {
+  display: inline-block;
+  position: relative;
+}
+.dropdown-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease-in-out;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: #224363;
+  white-space: nowrap;
+  z-index: 10;
+}
+.dropdown:hover .dropdown-content {
+  box-shadow: 0 2px 5px 2px #296484;
+  max-height: 200px;
+}
+.dropdown-content a {
+  display: block;
+  padding: 10px 15px;
+}
+.dropdown-content a:hover {
   background-color: #296484;
 }

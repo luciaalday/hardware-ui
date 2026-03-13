@@ -16,9 +16,11 @@ export default function ColorGame() {
     const [bh, setBh] = useState('00');
 
     const [showClue, setShowClue] = useState(false);
+    const [message, setMessage] = useState('');
     const [easy, setEasy] = useState(true);
     const [score, setScore] = useState(0);
     const [highScore, setHighScore] = useState(0);
+    const [start, setStart] = useState(true);
 
     const resetColor = async () => {
         const newR = Math.floor(Math.random() * 256);
@@ -29,7 +31,7 @@ export default function ColorGame() {
         setG(newG);
         setB(newB);
 
-        setScore();
+        setScore(0);
     }
 
     const handleRu = async (r) => {
@@ -47,9 +49,17 @@ export default function ColorGame() {
 
     const handleGuess = async () => {
         setShowClue(true);
-        setScore(score + 1);
-        setTimeout(()=>setShowClue(false), 2000);
+        await setScore(score + 1);
+        await setTimeout(()=>setShowClue(false), 2000);
         if (r==ru && g==gu && b==bu) {
+            setMessage("Spot on!");
+            await setTimeout(()=>setMessage(''), 2000);
+            if (score > highScore) await setHighScore(score);
+            resetColor();
+        }
+        else if ((r < ru+5 && r > ru-5) && (g < gu+5 && g > gu-5) && (b < bu+5 && b > bu-5)) {
+            setMessage("Amazing!");
+            await setTimeout(()=>setMessage(''), 2000);
             if (score > highScore) await setHighScore(score);
             resetColor();
         }
@@ -61,9 +71,9 @@ export default function ColorGame() {
         const gHex = hex.substring(2, 4);
         const bHex = hex.substring(4, 6);
 
-        setRh(rHex);
-        setGh(gHex);
-        setBh(bHex);
+        rHex && setRh(rHex);
+        gHex && setGh(gHex);
+        bHex && setBh(bHex);
         
         setRu(parseInt(rHex, 16));
         setGu(parseInt(gHex, 16));
@@ -103,12 +113,19 @@ export default function ColorGame() {
                         <input type='text' onChange={(e)=>handleHex(e.target.value)} placeholder='000000' />
                     </div>
                 </div>
-                <button onClick={handleGuess}>Guess</button>
-                <br></br>
-                <button onClick={resetColor}>New color</button>
-                <br></br>
+                {start ?
+                <div>
+                    <button onClick={()=>{resetColor();setStart(false)}}>Start game!</button>
+                </div>
+                :
+                <div>
+                    <button onClick={handleGuess}>Guess</button>
+                    <br></br>
+                    <button onClick={resetColor}>New color</button>
+                </div>}
                 <div className='game-item'>
-                    <h2>High Score {highScore}</h2>
+                    <h2>{message || `Current Score ${score}`}</h2>
+                    <p>Best Score {highScore > 0 && highScore}</p>
                 </div>
             </article>
             <button className='mode' onClick={()=>setEasy(!easy)}>{easy ? 'Easy' : 'Hard'}</button>

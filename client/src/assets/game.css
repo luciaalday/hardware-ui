@@ -85,3 +85,12 @@ h3.hidden {
 article {
   margin-bottom: 0;
 }
+.win-message {
+  position: absolute;
+  top: 40%;
+  left: 40%;
+  width: 20%;
+  height: 20%;
+  background-color: #bbe2f0;
+  border: 1px solid #29648480;
+}

@@ -13,7 +13,13 @@ export default function Nav() {
             <Link className="nav-top-link" title='Circuit' to='/circuit'><LuCircuitBoard /></Link>
             <Link className="nav-top-link" title='Stars' to='/stars'><GiFallingStar /></Link>
             <Link className="nav-top-link" title='Color' to='/color'><IoColorFilterOutline /></Link>
-            <Link className="nav-top-link" title='Color Game' to='/colorgame'><FaGamepad /></Link>
+            <div className='dropdown'>
+                <div className="nav-top-link" ><FaGamepad /></div>
+                <div className='dropdown-content'>
+                    <Link to={`/colorgame`}>Color game</Link>
+                    <Link to={`/ultimatetictactoe`}>Ultimate TicTacToe</Link>
+                </div>
+            </div>
         </nav>
     )
 }
