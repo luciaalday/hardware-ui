@@ -56,6 +56,10 @@ input {
   width: fit-content;
   margin: 10px auto;
 }
+input:focus {
+  border: none;
+  outline: none;
+}
 h3 {
   transition: 0.4s ease-in-out;
   font-size: 80px;
@@ -71,6 +75,11 @@ h3.hidden {
   text-decoration: underline;
   box-shadow: none;
   margin: 0;
+}
+.mode:hover {
+  background-color: transparent;
+  color: white;
+  text-decoration: none;
 }
 
 article {

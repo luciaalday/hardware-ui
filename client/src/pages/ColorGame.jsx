@@ -29,6 +29,7 @@ export default function ColorGame() {
         setG(newG);
         setB(newB);
 
+        setScore();
     }
 
     const handleRu = async (r) => {
@@ -51,9 +52,22 @@ export default function ColorGame() {
         if (r==ru && g==gu && b==bu) {
             if (score > highScore) await setHighScore(score);
             resetColor();
-            setScore();
         }
         return;
+    }
+
+    const handleHex = async (hex) => {
+        const rHex = hex.substring(0, 2);
+        const gHex = hex.substring(2, 4);
+        const bHex = hex.substring(4, 6);
+
+        setRh(rHex);
+        setGh(gHex);
+        setBh(bHex);
+        
+        setRu(parseInt(rHex, 16));
+        setGu(parseInt(gHex, 16));
+        setBu(parseInt(bHex, 16));
     }
 
     return (
@@ -81,6 +95,12 @@ export default function ColorGame() {
                         <input type='range' min='0' max='255' value={bu} onChange={(e)=>handleBu(Number(e.target.value))} style={{accentColor:easy ? `rgb(${ru}, ${gu}, ${bu})` : '#606060'}} />
                         <p>{bh}</p>
                         <h3 className={`${showClue ? '' : 'hidden'}`}>{bu==b ? <IoIosCheckmark /> : (b > bu ? <IoIosArrowUp /> : <IoIosArrowDown />)}</h3>
+                    </div>
+                </div>
+                <div className='game-item' style={{width:'fit-content', margin:'auto', textAlign:'center'}}>
+                    <div style={{display:'flex', justifyContent:'center', alignItems:'center', width:'fit-content'}}>
+                        <span>#</span>
+                        <input type='text' onChange={(e)=>handleHex(e.target.value)} placeholder='000000' />
                     </div>
                 </div>
                 <button onClick={handleGuess}>Guess</button>
