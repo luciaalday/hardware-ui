@@ -29,7 +29,6 @@ export default function UltimateTicTacToe() {
             const newPlays = [...b.plays];
             newPlays[j] = turn % 2 === 0 ? 'X' : 'O';
             return { ...b, plays: newPlays };
-            setMessage('Square claimed!');
         });
         setBoard(newBoard);
         setTurn(turn + 1);
@@ -48,6 +47,7 @@ export default function UltimateTicTacToe() {
         ||  board[i].plays[1] === board[i].plays[4] === board[i].plays[7]
         ||  board[i].plays[2] === board[i].plays[5] === board[i].plays[8]
         ) {
+            setMessage('Square claimed'); // check for whether or not the condition is ever checked
             curr = true;
         }
         if (curr) {
