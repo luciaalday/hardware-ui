@@ -48,3 +48,7 @@ button.square:active {
 .o-win {
     background-color: #404040;
 }
+.disabled {
+    box-shadow: 0 0 10px 5px #ffffff inset;
+    transition: 0.3s ease;
+}
