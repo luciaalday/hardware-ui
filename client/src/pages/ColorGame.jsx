@@ -15,6 +15,8 @@ export default function ColorGame() {
     const [gh, setGh] = useState('00');
     const [bh, setBh] = useState('00');
 
+    const [hex, setHex] = useState('000000');
+
     const [showClue, setShowClue] = useState(false);
     const [message, setMessage] = useState('');
     const [easy, setEasy] = useState(true);
@@ -36,15 +38,24 @@ export default function ColorGame() {
 
     const handleRu = async (r) => {
         setRu(r);
-        setRh(r.toString(16).padStart(2, '0').toUpperCase());
+        const newRh = r.toString(16).padStart(2, '0').toUpperCase();
+        setRh(newRh);
+        const newHex = newRh + hex.substring(2);
+        setHex(newHex);
     }
     const handleGu = async (g) => {
         setGu(g);
-        setGh(g.toString(16).padStart(2, '0').toUpperCase());
+        const newGh = g.toString(16).padStart(2, '0').toUpperCase();
+        setGh(newGh);
+        const newHex = hex.substring(0, 2) + newGh + hex.substring(4);
+        setHex(newHex);
     }
     const handleBu = async (b) => {
         setBu(b);
-        setBh(b.toString(16).padStart(2, '0').toUpperCase());
+        const newBh = b.toString(16).padStart(2, '0').toUpperCase();
+        setBh(newBh);
+        const newHex = hex.substring(0, 4) + newBh;
+        setHex(newHex);
     }
 
     const handleGuess = async () => {
@@ -57,7 +68,7 @@ export default function ColorGame() {
             if (score > highScore) await setHighScore(score);
             resetColor();
         }
-        else if ((r < ru+5 && r > ru-5) && (g < gu+5 && g > gu-5) && (b < bu+5 && b > bu-5)) {
+        else if ((r < ru+0x10 && r > ru-0x10) && (g < gu+0x10 && g > gu-0x10) && (b < bu+0x10 && b > bu-0x10)) {
             setMessage("Amazing!");
             await setTimeout(()=>setMessage(''), 2000);
             if (score > highScore) await setHighScore(score);
@@ -67,6 +78,8 @@ export default function ColorGame() {
     }
 
     const handleHex = async (hex) => {
+        setHex(hex);
+
         const rHex = hex.substring(0, 2);
         const gHex = hex.substring(2, 4);
         const bHex = hex.substring(4, 6);
@@ -109,8 +122,8 @@ export default function ColorGame() {
                 </div>
                 <div className='game-item' style={{width:'fit-content', margin:'auto', textAlign:'center'}}>
                     <div style={{display:'flex', justifyContent:'center', alignItems:'center', width:'fit-content'}}>
-                        <span>#</span>
-                        <input type='text' onChange={(e)=>handleHex(e.target.value)} placeholder='000000' />
+                        <span style={{fontSize:'x-large'}}>#</span>
+                        <input style={{fontSize:'large', width:'8ch'}} type='text' value={hex} onChange={(e)=>handleHex(e.target.value)} placeholder='000000' />
                     </div>
                 </div>
                 {start ?
