@@ -7,7 +7,8 @@ export default function Circuit() {
     return (
         <div>
             <h2>Circuit</h2>
-            {showLogicGates && <LogicGates />}
+            <br></br>
+            {showLogicGates ? <LogicGates /> :
             <article>
                 <div className="container">
                     <div className="container-item menu" style={{width:'20%'}}>
@@ -36,10 +37,24 @@ export default function Circuit() {
                     </div>
                     <div className="container-item grid" style={{width:'80%'}}>
                         <h2>Circuit diagram</h2>
+                        <div className='flex-container'>
+                            <div className='flex-col'>
+                                <input type='text' placeholder='Input A' />
+                                <input type='text' placeholder='Input B' />
+                                <input type='text' placeholder='Input C' />
+                                <input type='text' placeholder='Input D' />
+                                <input type='text' placeholder='Input E' />
+                                <input type='text' placeholder='Input F' />
+                                <input type='text' placeholder='Input G' />
+                                <input type='text' placeholder='Input H' />
+                                <input type='text' placeholder='Input I' />
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </article>
-            <button onClick={()=>setShowLogicGates(!showLogicGates)}>Logic gates</button>
+            </article>}
+            <br></br>
+            <button onClick={()=>setShowLogicGates(!showLogicGates)}>{showLogicGates ? 'Circuit Diagram' : 'Logic Gates'}</button>
         </div>
     )
 }

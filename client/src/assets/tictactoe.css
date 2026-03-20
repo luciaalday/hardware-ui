@@ -14,7 +14,7 @@
     aspect-ratio: 1;
 }
 .child-grid {
-    border: 1px solid red;
+    border: 1px solid white;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: repeat(3, 1fr);
@@ -23,7 +23,7 @@
 }
 button.square {
     background-color: transparent;
-    border: 1px solid blue;
+    border: 1px solid #266878;
     box-shadow: none;
     margin: 0;
     border-radius: 0;
@@ -43,12 +43,15 @@ button.square:active {
 .right  { border-right:  none !important }
 
 .x-win {
-    background-color: #909090;
+    background-color: #4650ff20;
 }
 .o-win {
-    background-color: #404040;
+    background-color: #f0804030;
 }
 .disabled {
-    box-shadow: 0 0 10px 5px #ffffff inset;
+    box-shadow: 0 0 10px 5px #296484 inset;
     transition: 0.3s ease;
+}
+button:disabled {
+    cursor: not-allowed;
 }
