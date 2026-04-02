@@ -1,6 +1,6 @@
 import starinfo from './starinfo.json';
 import './stars.css';
-import { useEffect, useRef, useMemo, useState, useCallback } from 'react';
+import { useEffect, useRef, useState, useCallback } from 'react';
 
 function parseRA(ra) {
     const [h, m, s] = ra.split(":").map(parseFloat);

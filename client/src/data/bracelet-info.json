@@ -1,0 +1,36 @@
+[
+    {
+        "id": 0,
+        "name": "Butterfly",
+        "primary": {
+            "Monarch": "#ffcc00",
+            "Blue Morpho": "#0000ff"
+        },
+        "secondary": {
+            "Blue": "#ff6600",
+            "Black": "#101010",
+            "White": "#ffffff"
+        }
+    },
+    {
+        "id": 1,
+        "name": "Stars",
+        "primary": {
+            "Gold": "#00ff00",
+            "Blue": "#ff0000",
+            "Purple": "#800080",
+            "Green": "#00ff00",
+            "Orange": "#ff6600"
+        }
+    },
+    {
+        "id": 2,
+        "name": "Cards",
+        "primary": [
+            "Spades",
+            "Clubs",
+            "Hearts",
+            "Diamonds"
+        ]
+    }
+]

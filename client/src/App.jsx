@@ -7,6 +7,7 @@ import Stars from './stars/stars';
 import ColorContrast from './pages/ColorContract';
 import ColorGame from './pages/ColorGame';
 import UltimateTicTacToe from './pages/UltimateTicTacToe';
+import Bracelets from './pages/Bracelets';
 
 export default function App() {
   return (
@@ -21,6 +22,7 @@ export default function App() {
           <Route path={`/color`} element={<ColorContrast />} />
           <Route path={`/colorgame`} element={<ColorGame />} />
           <Route path={`/ultimatetictactoe`} element={<UltimateTicTacToe />} />
+          <Route path={`/bracelets`} element={<Bracelets />} />
         </Routes>
       </Router>
     </div>
