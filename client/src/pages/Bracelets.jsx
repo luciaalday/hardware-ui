@@ -1,5 +1,4 @@
-import braceletinfo from '../assets/braceletinfo.json';
-import './bracelets.css';
+import '../assets/bracelets.css';
 
 export default function Bracelets() {
   return (

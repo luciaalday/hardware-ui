@@ -68,11 +68,13 @@ export default function ColorGame() {
             if (score > highScore) await setHighScore(score);
             resetColor();
         }
-        else if ((r < ru+0x10 && r > ru-0x10) && (g < gu+0x10 && g > gu-0x10) && (b < bu+0x10 && b > bu-0x10)) {
-            setMessage("Amazing!");
-            await setTimeout(()=>setMessage(''), 2000);
-            if (score > highScore) await setHighScore(score);
-            resetColor();
+        if (easy) {
+            if ((r < ru+0x10 && r > ru-0x10) && (g < gu+0x10 && g > gu-0x10) && (b < bu+0x10 && b > bu-0x10)) {
+                setMessage("Amazing!");
+                await setTimeout(()=>setMessage(''), 2000);
+                if (score > highScore) await setHighScore(score);
+                resetColor();
+            }
         }
         return;
     }
