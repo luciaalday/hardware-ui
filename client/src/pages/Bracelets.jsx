@@ -1,10 +1,16 @@
-import braceletinfo from '../assets/braceletinfo.json';
-import './bracelets.css';
+import ButterflyPattern from "./bracelets/butterfly";
+
 
 export default function Bracelets() {
+  {/**
+  const [primaryColor, setPrimaryColor] = useState('#000000');
+  const [backgroundColor, setBackgroundColor] = useState('#ffffff');
+  const [accentColor, setAccentColor] = useState('#000000');
+     */}
+
   return (
     <div className='bracelets'>
-      <h1>Bracelets</h1>
+      <ButterflyPattern />
     </div>
   )
 }
