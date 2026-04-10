@@ -1,5 +1,5 @@
 .colorpicker {
-    display: absolute;
+    position: absolute;
     z-index: 1000;
     background-color: #e0e0e0;
     width: fit-content;
@@ -37,4 +37,14 @@
 }
 .cb:hover {
     cursor: pointer;
+}
+.open-on-hover {
+    max-width: 0;
+    width: 0;
+    transition: 0.2s ease;
+    overflow: hidden;
+}
+.open-on-hover:hover {
+    width: fit-content;
+    max-width: 100px;
 }

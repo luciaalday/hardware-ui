@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import '../assets/tictactoe.css';
 
 export default function UltimateTicTacToe() {
@@ -24,11 +24,18 @@ export default function UltimateTicTacToe() {
             return { ...b, plays: newPlays };
         });
         setBoard(newBoard);
-        if (newBoard[i].includes(null)) setAllowAll(false);
-        else setAllowAll(true);
-        setTurn(turn + 1);
+        if (newBoard[i].plays?.includes(null)){
+            setAllowAll(false);
+        } else {
+            setAllowAll(true);
+        }
         setSquare(j);
-        checkChildWin(i, newBoard);
+        const newWins = checkChildWin(i, newBoard);
+        const won = getWinner(newWins);
+        if (won) {
+            winMessage(won, turn);
+        }
+        setTurn(turn + 1);
     }
 
     const checkChildWin = (i, newBoard) => {
@@ -46,11 +53,12 @@ export default function UltimateTicTacToe() {
         ) {
             curr = true;
         }
+        const newWins = [...wins];
         if (curr) {
-            const newWins = [...wins];
             newWins[i] = turn % 2 === 0 ? 'x-win' : 'o-win';
             setWins(newWins);
         }
+        return newWins;
     }
 
     const getWinner = (wins) => {
@@ -68,8 +76,7 @@ export default function UltimateTicTacToe() {
         return null;
     };
 
-    useEffect(() => {
-        const winner = getWinner(wins);
+    const winMessage = async (winner, turn) => {
         if (winner) {
             if (winner === 'Draw') {
                 setMessage('Draw! At least one of you needs to get better');
@@ -77,7 +84,7 @@ export default function UltimateTicTacToe() {
                 setMessage(`${turn % 2 === 1 ? playerOneName : playerTwoName} wins!`);
             }
         }
-    }, [wins, turn]);
+    }
 
     return (
         <div className='tictactoe'>
@@ -95,7 +102,7 @@ export default function UltimateTicTacToe() {
                     <div>
                         <br></br>
                         <h2>{message}</h2>
-                        <button onClick={() => {setStart(true); setTurn(0); setBoard(Array(9).fill(null).map(() => ({ plays: Array(9).fill(null) }))); setWins(Array(9).fill(null)); setMessage(''); }}>Play again?</button>
+                        <button onClick={() => {setStart(true); setTurn(0); setBoard(Array(9).fill(null).map(() => ({ plays: Array(9).fill(null) }))); setWins(Array(9).fill(null)); setMessage(''); setAllowAll(true) }}>Play again?</button>
                         <br></br>
                         <br></br>
                     </div>

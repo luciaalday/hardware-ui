@@ -94,3 +94,7 @@ p {
 .dropdown-content a:hover {
   background-color: #296484;
 }
+.flex-row {
+  display: flex;
+  gap: 5px;
+}

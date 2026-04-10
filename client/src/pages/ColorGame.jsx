@@ -2,6 +2,29 @@ import '../assets/game.css'
 import { useState } from "react";
 import { IoIosArrowUp, IoIosArrowDown, IoIosCheckmark } from "react-icons/io";
 
+function Markers({ idName }) {
+    return (
+        <datalist id={idName}>
+            <option value="0"></option>
+            <option value="16"></option>
+            <option value="32"></option>
+            <option value="48"></option>
+            <option value="64"></option>
+            <option value="80"></option>
+            <option value="96"></option>
+            <option value="112"></option>
+            <option value="128"></option>
+            <option value="144"></option>
+            <option value="160"></option>
+            <option value="172"></option>
+            <option value="192"></option>
+            <option value="208"></option>
+            <option value="224"></option>
+            <option value="240"></option>
+            <option value="255"></option>
+        </datalist>
+    )
+}
 export default function ColorGame() {
     const [r, setR] = useState(0);
     const [g, setG] = useState(0);
@@ -103,21 +126,24 @@ export default function ColorGame() {
                     <div className='game-item'>
                         <h2>R</h2>
                         <input type='number' min='0' max='255' value={ru} onChange={(e)=>handleRu(Number(e.target.value))} />
-                        <input type='range' min='0' max='255' value={ru} onChange={(e)=>handleRu(Number(e.target.value))} style={{accentColor:easy ? `rgb(${ru}, ${gu}, ${bu})` : '#606060'}} />
+                        <input type='range' min='0' max='255' list="markers-1" value={ru} onChange={(e)=>handleRu(Number(e.target.value))} style={{accentColor:easy ? `rgb(${ru}, ${gu}, ${bu})` : '#606060'}} />
+                        <Markers idName="markers-1" />
                         <p>#{rh}</p>
                         <h3 className={`${showClue ? '' : 'hidden'}`}>{ru==r ? <IoIosCheckmark /> : (r > ru ? <IoIosArrowUp /> : <IoIosArrowDown />)}</h3>
                     </div>
                     <div className='game-item'>
                         <h2>G</h2>
                         <input type='number' min='0' max='255' value={gu} onChange={(e)=>handleGu(Number(e.target.value))} />
-                        <input type='range' min='0' max='255' value={gu} onChange={(e)=>handleGu(Number(e.target.value))} style={{accentColor: easy ? `rgb(${ru}, ${gu}, ${bu})` : '#606060'}} />
+                        <input type='range' min='0' max='255' list="markers-2" value={gu} onChange={(e)=>handleGu(Number(e.target.value))} style={{accentColor: easy ? `rgb(${ru}, ${gu}, ${bu})` : '#606060'}} />
+                        <Markers idName="markers-2" />
                         <p>{gh}</p>
                         <h3 className={`${showClue ? '' : 'hidden'}`}>{gu==g ? <IoIosCheckmark /> : (g > gu ? <IoIosArrowUp /> : <IoIosArrowDown />)}</h3>
                     </div>
                     <div className='game-item'>
                         <h2>B</h2>
                         <input type='number' min='0' max='255' value={bu} onChange={(e)=>handleBu(Number(e.target.value))} />
-                        <input type='range' min='0' max='255' value={bu} onChange={(e)=>handleBu(Number(e.target.value))} style={{accentColor:easy ? `rgb(${ru}, ${gu}, ${bu})` : '#606060'}} />
+                        <input type='range' min='0' max='255' list="markers-3" value={bu} onChange={(e)=>handleBu(Number(e.target.value))} style={{accentColor:easy ? `rgb(${ru}, ${gu}, ${bu})` : '#606060'}} />
+                        <Markers idName="markers-3" />
                         <p>{bh}</p>
                         <h3 className={`${showClue ? '' : 'hidden'}`}>{bu==b ? <IoIosCheckmark /> : (b > bu ? <IoIosArrowUp /> : <IoIosArrowDown />)}</h3>
                     </div>

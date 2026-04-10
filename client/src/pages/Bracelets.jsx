@@ -1,5 +1,4 @@
 import ButterflyPattern from "./bracelets/butterfly";
-
 import '../assets/bracelets.css';
 
 export default function Bracelets() {

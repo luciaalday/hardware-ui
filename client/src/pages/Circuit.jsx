@@ -5,7 +5,7 @@ import LogicGates from './LogicGates';
 export default function Circuit() {
     const [showLogicGates, setShowLogicGates] = useState(false);
     return (
-        <div>
+        <div className='circuit'>
             <h2>Circuit</h2>
             <br></br>
             {showLogicGates ? <LogicGates /> :
