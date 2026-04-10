@@ -7,6 +7,7 @@ export default function UltimateTicTacToe() {
     const [playerTwoName, setPlayerTwoName] = useState('Player Two');
     const [turn, setTurn] = useState(0);
     const [square, setSquare] = useState(0);
+    const [allowAll, setAllowAll] = useState(true);
 
     const [board, setBoard] = useState(Array(9).fill(null).map(() => ({
         plays: Array(9).fill(null),
@@ -23,6 +24,8 @@ export default function UltimateTicTacToe() {
             return { ...b, plays: newPlays };
         });
         setBoard(newBoard);
+        if (newBoard[i].includes(null)) setAllowAll(false);
+        else setAllowAll(true);
         setTurn(turn + 1);
         setSquare(j);
         checkChildWin(i, newBoard);
@@ -105,13 +108,13 @@ export default function UltimateTicTacToe() {
                         {board.map((key, i) =>
                         <div
                             className={`child-grid ${i<3 && 'top'} ${i>5 && 'bottom'} ${i%3==0 && 'left'} ${(i+1)%3==0 && 'right'} ${wins[i]} ${square===i && 'disabled'}`}
-                            style={square === i ? { boxShadow: `inset 0 0 10px 3px ${turn % 2 === 0 ? '#4650ff' : '#f84'}` } : {}}
+                            style={allowAll ? {boxShadow: `none`} : square === i ? { boxShadow: `inset 0 0 10px 3px ${turn % 2 === 0 ? '#4650ff' : '#f84'}` } : {}}
                         >
                             {key.plays.map((play, j) =>
                                 <button
                                 className={`square ${j<3 && 'top'} ${j>5 && 'bottom'} ${j%3==0 && 'left'} ${(j+1)%3==0 && 'right'}`}
                                 onClick={()=>handleTurn(i, j)}
-                                disabled={square!==null && square!==i}
+                                disabled={allowAll ? '' : (square!==null && square!==i)}
                                 >
                                     {play}
                                 </button>
