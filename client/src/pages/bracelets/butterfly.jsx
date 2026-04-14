@@ -11,8 +11,11 @@ export default function ButterflyPattern() {
     const [accent, setAccent] = useState('#000000');
     const [dots, setDots] = useState('#000000');
     const [thread, setThread] = useState('#000000');
-    const colorset = ["#000000", "#d93025", "#259b24", "#e8a916", "#1792c0", "#9c27b0", "#2196f3", "#4caf50"];
-    const threadset = ["#000000", "#ffffff", "#259b24", "#e8a916", "#1792c0", "#9c27b0", "#2196f3", "#4caf50"];
+    const colorset = [
+        "#ce3131", "#e66b29", "#debd19", "#f4f13d", "#c5c57c", "#a7ecb6", "#236e19", "#75d2ec", "#23bace", "#3d78ee", "#1235c3", "#042298",
+        "#e4aebf", "#de4ba5", "#b048d3", "#b69bd7", "#eabb8c", "#ab8b2e", "#4f0e36", "#0a2f4f", "#101010", "#8e8e8e", "#cdcdcd", "#f0f0f0"
+    ];
+    const threadset = ["#ce3131", "#c9a756", "#36963a", "#148db9", "#5e70d4", "#1a1a61", "#101010", "#8e8e8e", "#f0f0f0"];
 
     return (
         <div className='butterfly-pattern'>
